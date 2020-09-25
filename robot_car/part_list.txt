@@ -1,0 +1,9 @@
+Arduino UNO R3 CH340 - https://www.optimusdigital.ro/en/compatibile-with-arduino-uno/1678-placa-de-dezvoltare-compatibila-cu-arduino-uno-atmega328p-i-ch340.html
+
+L293D motor control shield motor drive expansion board - https://www.optimusdigital.ro/en/pwmservo-controllers/987-l293d-motor-control-shield-motor-drive-expansion-board.html
+
+HC-05 Master Slave Bluetooth Module with Adapter (3.3V and 5V compatible) - https://www.optimusdigital.ro/en/wireless-bluetooth/153-hc-05-master-slave-bluetooth-module-with-adapter-33v-and-5v-compatible.html
+
+Male and Female Jumper wire
+
+DC Power Switch
