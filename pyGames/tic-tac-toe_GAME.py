@@ -1,9 +1,9 @@
 import random
 board=[" " for x in range(10)]
-
+attempt=0
+locuri_libere=9
 def insertLetter(letter,pos):
     board[pos] =letter
-    
 def printBoard(board):
     print("-------------")
     print(" "+board[1]+" | "+board[2]+" | "+board[3]+ " ")
@@ -16,7 +16,7 @@ def printBoard(board):
 def spaceIsFree(pos):
     return board[pos] == ' '
 def isBoardFull(board):
-    if board.count(" ")>1:
+    if board.count(" ")>2:
         return False
     else:
         return True
@@ -42,18 +42,26 @@ def IsWinner(b,l):
         return False
 
 def userInput():
-        while True:
-            x=int(input("add the position you would like between 1 to 9: "))
-            if x>=1 and x<=9:
-                break
-        if spaceIsFree(x):
-            insertLetter("X",x)
-        else:
-            print("sorry this position is occupied")
+        run=True
+        while run:
+            try:
+                x=int(input("add the position you would like between 1 to 9: "))
+                if x>=1 and x<=9:
+
+                    if spaceIsFree(x):
+                        run = False
+                        insertLetter("X",x)
+                    else:
+                        print("sorry this position is occupied")
+                else:
+                    print("Please enter a number betweeen 1 and 9")
+            except:
+                print("introduce a number")
 
 def computerMove():
-    possibleMoves=[x for x,letter in enumerate(board) if letter==" "and x!=0]
+    possibleMoves=[x for x,letter in enumerate(board) if letter==" " and x!=0]
     move=0
+    locuri_libere=len(possibleMoves)
     for let in ["O","X"]:
         for i in possibleMoves:
             boardCopy=board[:]
@@ -69,7 +77,8 @@ def computerMove():
         move= random.choice(cornersOpen)
         return move
     if 5 in possibleMoves:
-        return 5
+        move=5
+        return move
 
     edgesOpen=[]
     for i in possibleMoves:
@@ -85,32 +94,36 @@ def main():
     while not(isBoardFull(board)):
         if not IsWinner(board,"O"):
             userInput()
+
             printBoard(board)
         else:
             print("sorry you lose")
             break
         if not IsWinner(board,"X"):
+
             move=computerMove()
+
             if move==0:
                 print("Tie Game")
             else:
                 insertLetter("O",move)
+
                 print("computer placed an O on position",move,":")
                 printBoard(board)
+
         else:
             print("You win")
             break
 
-
     if isBoardFull(board):
         print("Tie game")
-i=0
+
 while True:
-    if i==0:
-        x = input("Do you want to play? y/n: ")
-        i+=1
+    if attempt==0:
+        x=input("Start?  y/n: ")
     else:
         x=input("Do you want to play again? y/n: ")
+    attempt+=1
     if x.lower()== "y":
         board=[" " for x in range(10)]
         print("--------------")
